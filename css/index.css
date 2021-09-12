@@ -1,0 +1,468 @@
+/*----------GLOBAL CSS----------*/
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/*font-family: 'Roboto', sans-serif;*/
+
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+img {
+    width: 100%;
+}
+
+
+
+/*----------PSUDO CLASSES----------*/
+
+
+
+:root {
+    --dark-color:  rgba( 26, 27, 32, 1);
+    --lightish-dark-color: rgba( 33, 36, 43, 1);
+    --green-color: rgba(16, 182, 100, 1);
+    
+    --white-color: #fff;
+    --black-color: #000;
+}
+
+
+
+/*----------UTILITY CLASSES----------*/
+
+
+
+.container{
+    width: auto;
+    padding: 0rem 1rem;
+}
+
+.btn-container{
+    text-align: center;
+    padding: 10px 0em;
+}
+.btn{
+    background-color: var(--green-color);
+    color: var(--white-color);
+    padding: 0.75em 1.5em;
+    border-radius: 10px;
+    font-size: 1.25em;
+    display: inline-block;
+    width: min-content;
+}
+.add-btn{
+    background-color: var(--green-color);
+    color: var(--white-color);
+    padding: 0.75em 1.5em;
+    border-radius: 10px;
+    font-size: 1.25em;
+    display: inline-block;
+    width: min-content;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shadow{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.deep-bg{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.newEntry{
+    font: inherit;
+}
+
+/* Foul Card Screen CSS */
+
+.hide{
+    display: none;
+}
+.redcard{
+    display: block;
+    background-color: red;
+}
+.yellowcard{
+    display: block;
+    background-color: yellow;
+}
+
+
+
+/*----------CLASSES ID's and TAGS----------*/
+
+
+
+/* Pop Up */
+
+
+
+#Popup{
+    position: absolute;
+}
+#Popup > div{
+    position: relative;
+
+    height: 100vh;
+    width: 100vw;
+    border-radius: 10px;
+}
+#Popup > div .close-btn{
+    font-size: 1em;
+    font-weight: 600;
+    position: absolute;
+    margin: 1em;
+    padding: 1em;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    color: var(--white-color);
+    background-color: var(--lightish-dark-color);
+}
+
+
+
+/* ----------  Main ---------- */
+
+
+
+main{
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    padding: 10px;
+    min-height: 100vh;
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Primary Section */
+
+
+
+main article{
+    background-color: var(--lightish-dark-color);
+    padding: 20px 10px;
+    border-radius: 10px;
+    height: 100%;
+
+    
+}
+
+main article .scoresheet{
+    width: 100%;
+    margin: 10px 0px;
+
+    padding: 3em 0em;
+    border-radius: 10px;
+}
+main article .scoresheet div{
+    width: 100px;
+}
+main article .scoresheet .scorecard{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+main article .scoresheet div figure,
+main article .scoresheet div figure  img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+main article .scoresheet div input{
+    width: 100px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--white-color);
+    text-align: center;
+    font-size: 1.25em;
+}
+
+main article .Display-Area{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+}
+main article .Display-Area div{
+    height: 200px;
+    text-align: center;
+}
+
+
+main article .Controls{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    padding-bottom: 10px;
+}
+main article .Controls div{
+    text-align: center;
+}
+main article .Controls div input{
+    width: 100%;
+    font-size: 1.25em;
+    padding: 0.75em 1em;
+    text-align: center;
+    background: transparent;
+    color: var(--white-color);
+    outline: none;
+    border: var(--green-color) 1px solid;
+    border-radius: 10px;
+}
+
+main article .secondary-controls{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+
+    padding: 20px 0px;
+}
+main article .secondary-controls .add-btn{
+    font-size: 1em;
+    background-color: transparent;
+    border: var(--green-color) 1px solid;
+    border-radius: 5px;
+    width: auto;
+}
+
+
+
+main article .Accessories{
+    margin-bottom: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+}
+main article .Accessories div{
+    text-align: center;
+}
+main article .Accessories .card-pallet{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+main article .Accessories .card-pallet figure,
+main article .Accessories .card-pallet figure img{
+    height: 80px;
+    width: 60px;
+}
+main article .Accessories .whistle,
+main article .Accessories .whistle img{
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    border: var(--green-color) 1px solid;
+    background-color: var(--green-color);
+}
+
+
+
+/* Secondary Section */
+
+
+
+main aside{
+    padding: 20px 10px;
+}
+
+
+
+main aside .Statistics .heading{
+    color: var(--white-color);
+    font-size: 1.25em;
+    font-weight: 600;
+    padding: 20px 0px;
+    margin: 10px 0px;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+}
+main aside .Statistics .stats-grid{
+    padding: 10px 0px;
+    font-size: 1.125em;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-row-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+main aside .Statistics .stats-grid .stats-input{
+    width: 110px;
+    padding: 5px;
+    background: transparent;
+    color: var(--white-color);
+    font-size: 1.125em;
+    text-align: center;
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: var(--black-color) 1px solid;
+}
+
+
+
+main aside .Lineup{
+    margin: 10px 0px;
+    /*border: honeydew 1px dashed;*/
+}
+main aside .Lineup .field{
+    background-image: url('../images/field.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    height: 400px;
+    width: auto;
+    /*border: honeydew 1px dashed;*/
+}
+
+
+
+/* Footer */
+
+
+
+footer{
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    font-size: 1.25em;
+    text-align: center;
+    padding: 20px;
+}
+footer .social-grid{
+    padding: 20px 0px;
+    font-size: 1.25em;
+    color: var(--white-color);
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 400px;
+}
+footer .social-grid a:hover{
+    color: var(--green-color);
+    transition: 0.35s ease;
+}
+
+
+
+/*---------- MEDIA QUERY ----------*/
+
+
+
+@media(max-width: 960px){
+
+    .add-btn{
+        padding: 0.75em 1em;
+        font-size: 1.25em;
+    }
+}
+@media(max-width: 750px){
+
+    .add-btn{
+        padding: 0.75em 0.75em;
+        font-size: 1.25em;
+    }
+}
+
+@media(max-width: 640px) {
+    
+    main{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        min-height: auto;
+        height: auto;
+    }
+
+}
+
+@media(max-width: 440px) {
+    
+    .parameter{
+        font-size: 0.8em;
+    }
+    .btn,
+    .add-btn,
+    main article .Controls div input{
+        font-size: 1em;
+    }
+
+}
+
+
+@media(min-height: 885px){
+
+    main{
+        height: auto;
+        min-height: auto;
+    }
+
+}
+
+
+/* Print Options */
+
+
+@media print
+{
+    .noprint {
+        display: none;
+    }
+}

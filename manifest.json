@@ -1,0 +1,21 @@
+{
+    "name": "Football Scorer",
+    "short_name": "Football",
+    "start_url": "index.html",
+    "scope": "./",
+    "icons": [
+        {
+          "src": "images/logo.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        },
+        {
+          "src": "images/logo.png",
+          "sizes": "512x512",
+          "type": "image/jpeg"
+        }
+    ],
+    "theme_color": "rgba(16, 182, 100, 1)",
+    "background_color": "rgba( 33, 36, 43, 1)",
+    "display": "standalone"
+}

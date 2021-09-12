@@ -1,0 +1,210 @@
+<!--
+    + Football Field (D)
+    + Add whistle audio (E)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Tushar Singh">
+    <meta name="title" content="Football Scorer">
+    <meta name="og:title" content="Football Scorer">
+    <meta name="type" content="website">
+    <meta name="og:type" content="website">
+    <meta property="description" content="Website for Tracking your Football Games">   
+    <meta property="og:description" content="Website for Tracking your Football Games">
+    <meta name="keywords" content="Football Scorer, Football, Scorer, Game">
+
+    <title>Football Scorer | Home</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <header id="Popup" class="hide">
+        <div>
+            <a onclick="closeWindow(this)" class="close-btn"><i class="fa fa-times"></i> CLOSE</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Primary Section -->
+        
+        <article class="Primary-Screen flex">
+
+            <div>
+
+                <div class="btn-container">
+                    <a onclick="counters(this)" class="btn shadow" id="StartButton">START</a>
+                </div>
+    
+                <div class="scoresheet deep-bg flex shadow">
+                    <div>
+                        <figure>
+                            <img src="images/team-A-logo.png" alt="Team A Logo">
+                        </figure>
+                        <div><input type="text" name="text" placeholder="Team A"></div>
+                    </div>
+                    <div class="scorecard">
+                        <span id="scoreboardA">0</span>
+                        <span>:</span>
+                        <span id="scoreboardB">0</span>
+                    </div>
+                    <div>
+                        <figure>
+                            <img src="images/team-B-logo.png" alt="Team B Logo">
+                        </figure>
+                        <div><input type="text" name="text" placeholder="Team B"></div>
+                    </div>
+                </div>
+    
+                <div class="Display-Area">
+                    <div id="Display_Area_A"></div>
+                    <div id="Display_Area_B"></div>
+                </div>
+    
+                <div class="Controls noprint">
+                    <div class="noprint">
+                        <div><a onclick="inputFunA(this)" class="add-btn shadow">ADD</a></div>
+                    </div>
+                    <div class="noprint">
+                        <input type="text" name="name" class="shadow" id="Scorer_Name" placeholder="Add Name">
+                    </div>
+                    <div class="noprint">
+                        <div><a onclick="inputFunB(this)" class="add-btn shadow">ADD</a></div>
+                    </div>
+                </div>
+
+                <div class="secondary-controls noprint">
+                    <div class="noprint">
+                        <div><a class="add-btn shadow" onclick="undoA(this)">REMOVE A</a></div>
+                    </div>
+                    <div class="noprint">
+                        <div><a href="javascript:window.print()" class="add-btn shadow">PRINT</a></div>
+                    </div>
+                    <div class="noprint">
+                        <div><a class="add-btn shadow" onclick="undoB(this)">REMOVE B</a></div>
+                    </div>
+                </div>
+
+                <div class="Accessories noprint">
+                    <div class="flex noprint">
+                        <figure class="whistle shadow">
+                            <a><img src="images/whistle1.png" alt=""></a>
+                        </figure>
+                    </div>
+                    <div class="card-pallet flex noprint">
+                        <figure class="noprint">
+                            <a class="shadow" onclick="fullRedScreen(this)" ondblclick="closeWindow(this)"><img src="images/redcard.png" alt="Red Card"></a>
+                        </figure>
+                        <figure class="noprint">
+                            <a class="shadow" onclick="fullYellowScreen(this)" ondblclick="closeWindow(this)"><img src="images/yellowcard.png" alt="Yellow Card"></a>
+                        </figure>
+                    </div>
+                    <div class="flex noprint">
+                        <figure class="whistle shadow">
+                            <a><img src="images/whistle2.png" alt=""></a>
+                        </figure>
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- Secondary Section -->
+
+        <aside class="Secondary-Section">
+
+            <div class="Statistics">
+                <p class="heading deep-bg">STATISTICS</p>
+                <div class="stats-grid">
+
+                    <div><input type="number" name="number" class="stats-input" min="0" max="100"></div>
+                    <div class="parameter">Possession</div>
+                    <div><input type="number" name="number" class="stats-input"  min="0" max="100"></div>
+
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+                    <div class="parameter">Passes</div>
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+                    <div class="parameter">Assists</div>
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+                    <div class="parameter">Shots</div>
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+                    <div class="parameter">Shorts on Target</div>
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+                    <div class="parameter">Corner Kicks</div>
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+                    <div class="parameter">Fouls</div>
+                    <div><input type="number" name="number" class="stats-input" min="0"></div>
+                    
+                    <div><input type="number" name="number" class="stats-input" min="0" max="11"></div>
+                    <div class="parameter">Red Card</div>
+                    <div><input type="number" name="number" class="stats-input" min="0" max="11"></div>
+
+                    <div><input type="number" name="number" class="stats-input" min="0" max="11"></div>
+                    <div class="parameter">Yellow Card</div>
+                    <div><input type="number" name="number" class="stats-input" min="0" max="11"></div>
+
+                </div>
+            </div>
+
+            <div class="Lineup">
+                <div class="field">
+                    
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="noprint">
+        <div class="container">
+            <div style="border-top: var(--green-color) 1px solid; padding: 20px;"></div>
+        </div>
+        <p>This website is Designed and made by <a href="https://linktr.ee/tusharsingh">Tushar Singh</a>. You can check me out on my social media handles mentioned below.</p>
+        <div class="flex">
+            <div class="social-grid">
+                <div>
+                    <abbr title="Github"><a href="https://github.com/tusharsinghofficial"><i class="fa fa-github shadow"></i></a></abbr>
+                </div>
+                <div>
+                    <abbr title="LinkedIn"><a href="https://www.linkedin.com/in/tusharsinghofficial"><i class="fa fa-linkedin shadow"></i></a></abbr>
+                </div>
+                <div>
+                    <abbr title="Twitter"><a href="https://twitter.com/TusharSingh_1?s=09"><i class="fa fa-twitter shadow"></i></a></abbr>
+                </div>
+                <div">
+                    <abbr title="Link Tree"><a href="https://linktr.ee/tusharsingh"><span class="iconify" data-icon="simple-icons:linktree" data-inline="false"></span></a></abbr>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="" src="js/index.js"></script>
+    <script src="myscript.js"></script>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+</body>
+
+</html>
