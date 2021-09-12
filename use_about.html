@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="keywords" content="Refree, Football, Football Scorer, Game Tracker, Football Tracker">
+    <meta name="description" content="App that lets you track you football game in the most easy and detailed way.">
+
+    <title>How To Use | Football Scorer</title>
+    <!--LOGO--><link rel="shortcut icon" href="https://pngimg.com/uploads/football/football_PNG52797.png">
+
+    <style>
+
+        /*----------GLOBAL CSS----------*/
+    
+        @import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+    
+        *, body{
+            margin: 0;
+            padding: 0;
+            color: var(--white-color);
+            max-width: 480px;
+        }
+        body{
+            background: url(./Accessories/background_image.jpg) no-repeat;
+        }
+        
+        a{
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ::placeholder{
+            font: inherit;
+            color: inherit;
+            -webkit-font-smoothing: antialiased;
+        }
+    
+        img{
+            height: 60px;
+            width: 60px;
+            padding: 0em;
+            margin: 0em;
+        }
+    
+        input{
+            background: none;
+            outline: none;
+            border: none; 
+            text-align: center;
+            width: 80px;
+            font-weight: 500;
+        }
+    
+        .newEntry{
+            font-family: 'Langar', cursive;
+            font-size: 1em;
+            font-weight: 600;
+            -webkit-font-smoothing: antialiased;
+            padding: 0;
+            margin: 0;
+        }
+    
+        /*----------UTILITY CLASSES----------*/
+    
+        .container{
+            max-width:480px;
+            padding-left:1rem;
+            padding-right:1rem;
+            position: relative;
+            z-index: 3;
+        }
+    
+        .input_basic_css{
+            font-size: 1em;
+            font-weight: 1000;
+            padding: 0.25em 0em;
+            /*font-family: ;  -------------yet to be added-------------*/
+        }
+    
+        .btn{
+            color: var(--black-color);
+            font-size: 0.5em;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: var(--button-border-color);
+            padding: 0.25em 0.5em;
+            border: var(--button-border-color) 2px solid;
+            border-radius: 0.25em;
+            outline: none;
+            margin: 0.1em;
+        }
+        .btn2{
+            color: var(--white-color);
+            font-size: 0.5em;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: none;
+            padding: 0.25em 0.5em;
+            border: var(--button-border-color) 2px solid;
+            border-radius: 1em;
+            outline: none;
+            margin: 0.1em;
+        }
+
+        .i_btn{
+            color: var(--white-color);
+            font-size: 1em;
+            font-weight: 600;
+            background: none;
+            padding: 0.5em;
+            border: var(--button-border-color) 2px solid;
+            border-radius: 1em;
+            outline: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0.1em;
+            cursor: pointer;
+        }
+    
+        .redcard{
+            background:red;
+            height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+    
+        .yellowcard{
+            background: yellow;
+            height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+    
+        /*----------PSUDO CLASSES----------*/
+    
+        :root{
+            --red-card-color: rgb(255, 0, 0);
+            --yellow-card-color: rgb(255, 255, 0);
+            --black-color: #000;
+            --white-color: #fff;
+            --button-border-color: rgb(90, 247, 220);
+            --button-hover-color: rgba(90, 247, 221, 0.75);
+        }
+    
+        /*----------ID'S CLASSES----------*/
+
+        #main-head{
+            text-align: center;
+            padding: 1em;
+        }
+
+        #Info_App{
+            padding:1em;
+        }
+        #Info_App .head{
+            font-size: 2em;
+            font-weight: 600;
+            text-decoration: underline;
+            padding: 0.5em 0em;
+        }
+        #Info_App .body{
+            font-size: 1em;
+            padding: 0.5em 0em 1em 0em;
+        }
+    
+        #footer{
+            background-color: var(--black-color);
+            color: var(--black-color);
+            text-align: center;
+            padding: 2em 0em;
+        }
+        #footer p{
+            color: var(--white-color);
+            padding-bottom: 1em;
+        }
+            
+    </style>
+
+    <link rel="manifest" href="manifest.json">
+
+</head>
+
+<body>
+
+    <section id="main-head">
+        <div class="container">
+            <button class="i_btn"><a href="index.html">BACK</a></button>
+            <img src="./Accessories/SiteLogo-2.png" alt="">
+        </div>
+    </section>
+
+    <section id="Info_App">
+        <div class="container">
+            <p class="head">How To Use</p>
+            <ol>
+                <li class="body">Enter the names of both the teams, abbreviations or full name, as per your convenience. Abbreviations are preferred. ( For Example - India or IND )</li>
+                <li class="body">Click on the <span class="btn">START</span> Button to start the timer when the match begins. You can click on the same button to pause/play the timer as required. The timer doenot have an upper limit and so the match can be played for any amount of time.</li>
+                <li class="body">After the match begins, when a goal is scored, you may type the name of the goal scorer and click the <span class="btn">ADD</span> button to add the event. Name of the goal scorer, minute at which he/she scored and the Score is updated automtically.</li>
+                <li class="body">An <span class="btn2">UNDO</span> button is provided to remove the event if added by mistake or is declared no goal.</li>
+                <li class="body">The red and yellow colored cards are buttons to pop open red and yellow screens for showing cards to a player. The card can be closed using the <span class="btn2">ESCAPE</span> button given below the cards button.</li>
+                <li class="body">Whistles are available for refrees to use as required.</li>
+
+            </ol>
+
+            <p class="head">TIPS</p>
+            <ol>
+                <li class="body">There is no option to set half time interval but the timer can be paused as per convinence, allowing half time of any interval, even no half time.</li>
+            </ol>
+
+            <p class="head">FUTURE UPDATES</p>
+            <ol>
+                <li class="body">Archive Database to save and view games played.</li>
+                <li>More Refree Accessories such as different whistle variations.</li>
+            </ol>
+        </div>
+    </section>
+    
+    <section id="footer">
+        <div class="container">
+            <p>Developer : <a href="https://www.instagram.com/official.tusharsingh?r=nametag">Tushar Singh</a></p>
+            <p>Version 1.1.2</p>
+        </div>
+    </section>
+
+    <script src="myscripts.js"></script>
+
+</body>
+
+</html>

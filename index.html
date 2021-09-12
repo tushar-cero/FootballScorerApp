@@ -1,0 +1,695 @@
+<!--
+    1.  Improve the red/yellow card background. 
+    2.  Ask for permission before undoing.
+    3.  Whistle Audio online.  
+    4.  Add DataBase.
+    5.  Deploy Web App. 
+-->
+<!--
+    Background URL (Body): https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ffiles.all-free-download.com%2Fdownloadfiles%2Fwallpapers%2F1680_1050%2Fuefa_champions_league_wallpaper_football_sports_1689.jpg&f=1&nofb=1;
+    logo A URL: https://www.nicepng.com/png/full/172-1726435_football-vector-modern-logo-design-for-football-team.png;
+    logo B URL: https://img.pngio.com/tbjfc-coed-flag-football-logos-football-logos-png-1294_1361.png;
+    whislte 1 URL: https://img.icons8.com/ios-filled/50/000000/whistle.png;
+    whistle 2 URL: https://img.icons8.com/offices/30/000000/whistle.png;
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="keywords" content="Refree, Football, Football Scorer, Game Tracker, Football Tracker">
+    <meta name="description" content="App that lets you track you football game in the most easy and detailed way.">
+
+    <title>Football Scorer</title>
+
+    <style>
+
+        /*----------GLOBAL CSS----------*/
+
+        @import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+
+        *, body{
+            margin: 0;
+            padding: 0;
+            color: var(--white-color);
+            max-width: 480px;
+        }
+        body{
+            background-image: url(./Accessories/background_image.jpg);
+            background-repeat: no-repeat;
+            background-position: top;
+            height: auto;
+            min-height: 100vh;
+        }
+        body::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: rgba(0,0,0,0.5);
+        }
+
+        a{
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        ::placeholder{
+            font: inherit;
+            color: inherit;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        img{
+            height: 60px;
+            width: 60px;
+            padding: 0em;
+            margin: 0em;
+        }
+        
+        input{
+            background: none;
+            outline: none;
+            border: none; 
+            text-align: center;
+            width: 80px;
+            font-weight: 500;
+        }
+        
+        /*----------UTILITY CLASSES----------*/
+        
+        .container{
+            max-width:480px;
+            padding-left:1rem;
+            padding-right:1rem;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .input_basic_css{
+            font-size: 1em;
+            font-weight: 1000;
+            padding: 0.25em 0em;
+            /*font-family: ;  -------------yet to be added-------------*/
+        }
+        
+        .btn{
+            color: var(--black-color);
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: var(--button-border-color);
+            padding: 0.5em 1em;
+            border: var(--button-border-color) 2px solid;
+            border-radius: 0.25em;
+            outline: none;
+        }
+        .btn2{
+            color: var(--white-color);
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: none;
+            padding: 0.5em 1em;
+            border: var(--button-border-color) 2px solid;
+            border-radius: 1em;
+            outline: none;
+        }
+
+        .newEntry{
+            font-family: 'Langar', cursive;
+            font-size: 1em;
+            font-weight: 600;
+            -webkit-font-smoothing: antialiased;
+            padding: 0;
+            margin: 0;
+        }
+
+        .i_btn{
+            font-family: 'Yellowtail', cursive;
+            color: var(--white-color);
+            font-size: 1em;
+            font-weight: 600;
+            background: none;
+            padding: 0em 0.5em;
+            border: var(--button-border-color) 2px solid;
+            border-radius: 1em;
+            outline: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0.1em;
+            cursor: pointer;
+        }
+
+        .redcard{
+            background:red;
+            height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+
+        .yellowcard{
+            background: yellow;
+            height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /*----------PSUDO CLASSES----------*/
+        
+        :root{
+            --red-card-color: rgb(255, 0, 0);
+            --yellow-card-color: rgb(255, 255, 0);
+            --black-color: #000;
+            --white-color: #fff;
+            --button-border-color: rgb(90, 247, 220);
+            --button-hover-color: rgba(90, 247, 221, 0.75);
+        }
+        
+        /*----------ID'S CLASSES----------*/
+        
+        #Heading_UI{
+            height: auto;
+            text-align: center;
+            padding: 1em 0em;
+        }
+        
+        
+        #ScoreBoard_UI{
+            border-bottom: var(--button-hover-color) 1px solid;
+            padding: 1em 0em;
+        }
+        #ScoreBoardDisplay_UI{
+            height: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 0.1em;
+        }
+        #ScoreBoardDisplay_UI .sub_Boards{
+            text-align: center;
+            align-self: center;
+            font-size: 2.1em;
+            padding: 0em;
+        }
+        #ScoreBoardInput_UI{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        #ScoreBoardInput_UI ::placeholder{
+            padding-left: 1em;
+            text-align: left;
+        }
+        #ScoreBoardInput_UI .right{
+            text-align: right;
+        }
+        #ScoreBoardInput_UI .right ::placeholder{
+            text-align: right;
+            padding-right: 1em;
+        }
+        #ScoreBoardInput_UI input{
+            text-transform: uppercase;
+            font-size: 1.2em;
+            width: 150px;
+        }
+        
+        
+        .Display_Area_UI{
+            min-height: 35vh;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0.5em 0em;
+        }
+        .Display_Area_UI #Display_Area_A{
+            text-align: left;
+            padding: 0;
+            margin: 0;
+            font-size: 0.8em;
+        }
+        .Display_Area_UI #Display_Area_B{
+            text-align: right;
+            padding: 0;
+            margin: 0;
+            font-size: 0.8em;
+        }
+        
+        #NameInput_UI{
+            height: auto;
+            padding: 2em 0em;
+        
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 0.1cm;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            justify-items: center;
+        
+            text-align: center;
+        }
+        #NameInput_UI input{
+            width: 100px;
+        }
+        
+        #Refree_Accessories{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 1em;
+        }
+        #Refree_Accessories div{
+            justify-self: center;
+            align-self: center;
+        }
+        #Refree_Accessories .whistle_icon{
+            padding: 1em;
+            border: var(--button-border-color) 2px solid;
+            border-radius: 50%;
+            outline: none;
+            background: none;
+        }
+        #Refree_Accessories .whistle_icon img{
+            color: var(--button-border-color);
+            height: 25px;
+            width: 25px;
+        }
+        #Refree_Accessories .cards{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #Refree_Accessories .cards :nth-child(3){
+            grid-column: 1/3;
+            padding: 0;
+            margin: 0;
+            grid-gap: 0;
+        }
+        #Refree_Accessories .cards .red_card{
+            background-color: var(--red-card-color);
+            height: 55px;
+            width: 50px;
+            outline: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        #Refree_Accessories .cards .yellow_card{
+            background-color: var(--yellow-card-color);
+            height: 55px;
+            width: 50px;
+            outline: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        #Other_Buttons{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            padding: 2.5em 0em 2em 0em;
+        }
+        
+        
+        @media(max-width: 350px){
+        
+            #ScoreBoardDisplay_UI .sub_Boards{
+                font-size: 1.8em;
+            }
+        
+        }
+        @media(min-width: 480px){
+            img{
+                max-width: 450px;
+                height: initial;
+            }
+        }
+        
+    </style>
+
+    <link rel="manifest" href="manifest.json">
+    <!--LOGO--><link rel="shortcut icon" href="https://pngimg.com/uploads/football/football_PNG52797.png">
+    <!--FONT AWESOME--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="container">
+
+    <section id="Heading_UI">
+        <div class="container">
+            <button class="i_btn"><a href="use_about.html">i</a></button>
+            <button name="Start Button" class="btn" id="StartButton" onclick="counters(this)">Start</button>
+        </div>
+    </section>
+
+    <section id="ScoreBoard_UI">
+        <div id="ScoreBoardDisplay_UI" class="container">
+            <div class="sub_Boards">
+                <div><img src="./Accessories/logoA.png" alt="LOGO TEAM A"></div>
+            </div>
+            <div class="sub_Boards">
+                <span id="scoreboardA" class="scoreboard scoreboard1">0</span> - 
+                <span id="scoreboardB" class="scoreboard scoreboard2">0</span>
+            </div>
+            <div class="sub_Boards">
+                <div><img src="./Accessories/logoB.png" alt="LOGO TEAM B"></div>
+            </div>
+        </div>
+        <div id="ScoreBoardInput_UI" class="container">
+            <div><input type="text" placeholder="TEAM A"></div>
+            <div class="right"><input type="text" placeholder="TEAM B"></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="Display_Area_UI">
+                <div id="Display_Area_A"></div>
+                <div id="Display_Area_B"></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div id="NameInput_UI">
+                <div>
+                    <button name="Add Button A" class="btn" onclick="inputFunA(this)">ADD</button>
+                </div>
+                <div>
+                    <input class="input_basic_css" onfocus=this.value='' type="text" id="Scorer_Name" placeholder="Enter Name">
+                </div>
+                <div>
+                    <button name="Add Button B" class="btn" onclick="inputFunB(this)">ADD</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div id="Refree_Accessories" class="container">
+            <div>
+                <button name="Whistle Button" type="button" class="whistle_icon"><img src="./Accessories/whistle2.png" alt="WHISTLE BUTTON"/></button>
+            </div>
+            <div class="cards">
+                <div>
+                    <button name="Card Button" type="button" href="#Foul_Card_Body" onclick="fullRedScreen(this)" ondblclick="exitFullRedScreen(this)" class="red_card"></button>
+                </div>
+                <div>
+                    <button name="Card Button" type="button" href="#Foul_Card_Body" onclick="fullYellowScreen(this)" ondblclick="exitFullYellowScreen(this)" class="yellow_card"></button>
+                </div>
+            </div>
+            <div>
+                <button name="Whistle Button" type="button" class="whistle_icon"><img src="./Accessories/whistle1.png" alt="WHISTLE LOGO"/></button>
+            </div>
+        </div>
+        <div id="Other_Buttons" class="container">
+            <div>
+                <button name="Undo Button A" type="button" onclick="undoA(this)" onclick="exitFullRedScreen(this)" class="btn2">UNDO A</button>
+            </div>
+            <div>
+                <button name="Escape Button" type="button" href="#Foul_Card_Body" onclick="exitFullYellowScreen(this)" onclick="exitFullRedScreen(this)" class="btn2">Escape</button>
+            </div>
+            <div>
+                <button name="Undo Button B" type="button" onclick="undoB(this)" onclick="exitFullRedScreen(this)" class="btn2">UNDO B</button>
+            </div>
+        </div>
+    </section>
+
+    <section style="overflow-x: hidden; padding: 0; margin: 0;">
+        <div class="container">
+            <div id="Foul_Card_Body"></div>
+        </div>
+    </section>
+
+
+</body>
+
+<script src="myscripts.js"></script>
+
+<script>
+
+    //------------------GLOBAL VARIABLES------------------
+
+    var minutes=0;
+
+    //------------------NAME INPUT/OUTPUT------------------
+        
+    
+    var score = 0;
+    var arrA = new Array();
+    var data_base_A = new Array();
+
+    function inputFunA(e)
+    {
+        var name_entered = (document.getElementById('Scorer_Name')).value;
+        name_entered = cleanString(name_entered);
+
+        if(name_entered == ''){
+            return;
+        }
+        else{
+            data_base_A.push(`${name_entered} ${minutes}"`);
+            dataBaseToArray_A();
+        }
+        display_A();
+        console.log('DataBase Array for Team A is '+data_base_A);
+    }
+    function dataBaseToArray_A(e)
+    {
+        arrA = [];
+        for(var i=0; i<data_base_A.length; i++)
+        {
+            var position = binarySearch(arrA, data_base_A[i]);
+            if(position == -1){
+                arrA.push(data_base_A[i]);
+            }
+            else{
+                var minuteToBeAddedA = data_base_A[i].split(' ');
+                var myLength = minuteToBeAddedA.length - 1;
+                arrA[position] = arrA[position] + ' ' + minuteToBeAddedA[myLength];
+            }
+        }
+    }
+    function display_A()
+    {
+        var Display_Area = document.getElementById('Display_Area_A');
+        var scorecard = document.getElementById('scoreboardA');
+        Display_Area.innerHTML = '';
+
+        for(var i=0; i<arrA.length; i++)
+        {
+            var newName = document.createElement("p");
+            newName.innerHTML = arrA[i];
+            newName.className = 'newEntry';
+            Display_Area.appendChild(newName);
+        }
+        score = whatIsTheScore(arrA);
+        scorecard.innerHTML = score;
+        console.log('Display Array for Team A is '+arrA);
+    }
+    function undoA(e)
+    {
+        data_base_A.pop();
+        dataBaseToArray_A();
+        display_A();
+    }
+
+    // --- X ---
+
+    var arrB = new Array();
+    var data_base_B = new Array();
+
+    function inputFunB(e)
+    {
+        var name_entered = (document.getElementById('Scorer_Name')).value;
+        name_entered = cleanString(name_entered);
+        
+        if(name_entered == ''){
+            return;
+        }
+        else{
+            data_base_B.push(`${name_entered} ${minutes}"`);
+            dataBaseToArray_B();
+        }
+        display_B();
+        console.log('DataBase Array for Array B is '+data_base_B);
+    }
+    function dataBaseToArray_B(e)
+    {
+        arrB = [];
+        for(var i=0; i<data_base_B.length; i++)
+        {
+            var position = binarySearch(arrB, data_base_B[i]);
+            if(position == -1){
+                arrB.push(data_base_B[i]);
+            }
+            else{
+                var minuteToBeAddedB = data_base_B[i].split(' ');
+                var myLength = minuteToBeAddedB.length - 1;
+                arrB[position] = arrB[position] + ' ' + minuteToBeAddedB[myLength];
+            }
+        }
+    }
+    function display_B()
+    {
+        var Display_Area = document.getElementById('Display_Area_B');
+        var scorecard = document.getElementById('scoreboardB');
+        Display_Area.innerHTML = '';
+
+        for(var i=0; i<arrB.length; i++)
+        {
+            var newName = document.createElement("p");
+            newName.innerHTML = arrB[i];
+            newName.className = 'newEntry';
+            Display_Area.appendChild(newName);
+        }
+        score = whatIsTheScore(arrB);
+        scorecard.innerHTML = score;
+        console.log('Display Array for Team B '+arrB);
+    }
+    function undoB(e)
+    {
+        data_base_B.pop();
+        dataBaseToArray_B();
+        display_B();
+    }
+
+
+    function whatIsTheScore(array)
+    {
+        var score = 0;
+        for(var i=0; i<array.length; i++)
+        {
+            var arrForEach = array[i].split(' ');
+            //score = score + arrForEach.length - 1;
+            for(var j=0; j<arrForEach.length; j++)
+            {
+                if(arrForEach[j].length==3 && arrForEach[j].charAt(2)=='"')
+                    score++;
+                else if(arrForEach[j].length==2 && arrForEach[j].charAt(1)=='"')
+                    score++;
+            }
+        }
+        return score;
+    }
+    function binarySearch(array, key)
+    {
+        for(var i=0; i<array.length; i++)
+        {
+            var arrForEach = array[i].split(' ');
+            var keyarr = key.split(' ');
+            if(arrForEach[0]==keyarr[0]) 
+            {
+                return i; 
+            }       
+        }
+        return -1;
+    }
+    function cleanString(myString)
+    {
+        myString = myString.trim();
+
+        if( hasLowerCase(myString.charAt(0)) )
+        {
+            myString = myString.charAt(0).toUpperCase() + myString.substring(1);
+        }
+
+        return myString;
+    }
+    function hasLowerCase(str)
+    {
+        if(str.toUpperCase() != str){
+            return true;
+        }
+        else{
+            return false;    
+        }
+    }
+
+    //------------------CARD WINDOW POP------------------
+
+    var mydiv = document.getElementById('Foul_Card_Body');
+
+    function fullRedScreen(e)
+    {
+        mydiv.className = 'redcard';
+        document.getElementById('Foul_Card_Body').scrollIntoView();
+    }
+    function exitFullRedScreen(e)
+    {
+        mydiv.className = '';
+    }
+
+    function fullYellowScreen(e)
+    {
+        mydiv.className = 'yellowcard';
+        document.getElementById('Foul_Card_Body').scrollIntoView();
+    }
+    function exitFullYellowScreen(e)
+    {
+        mydiv.className = '';
+    }
+
+    //------------------TIMERS------------------
+
+    var funCallVar = 0;
+    function counters(e)
+    {
+        if((funCallVar)%2==0)
+            startCounter(this);
+        else
+            stopCounter(this);
+    }
+    function startCounter(e)
+    {
+        funCallVar++;
+        clearID = window.setInterval(timerUpdate, 1000);
+    }
+    var timerEl = document.getElementById('StartButton');
+    var time = 0;
+    function timerUpdate(e)
+    {
+        timerEl.innerHTML = '00:00';
+        time++;
+        var seconds = time%60;
+        minutes = Math.floor(time/60);
+        if(seconds<10){
+            seconds = '0' + seconds;
+        }
+        if(minutes<10){
+            minutes = '0' + minutes;
+        }
+        timerEl.innerHTML = `${minutes}:${seconds}`;
+    }
+
+    function stopCounter(e)
+    {
+        funCallVar++;
+        window.clearInterval(clearID);
+    }
+
+    //------------------ASK PERMISSION BEFORE REFRESH------------------
+
+    window.onbeforeunload = function (e) 
+    {
+        e = e || window.event;
+
+        // For IE and Firefox prior to version 4
+        if (e) {
+            e.returnValue = 'Sure?';
+        }
+
+        // For Safari
+        return 'Sure?';
+    };
+            
+</script>
+
+</html>
